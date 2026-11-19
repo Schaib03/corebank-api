@@ -1,0 +1,14 @@
+# H2 in PostgreSQL mode so the Flyway migrations run unchanged.
+# CI also runs the same tests against a real PostgreSQL by setting SPRING_DATASOURCE_URL.
+spring:
+  datasource:
+    url: jdbc:h2:mem:corebank;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ""
+
+corebank:
+  jwt:
+    secret: test-only-secret-0123456789abcdef0123456789
+  admin:
+    email: admin@corebank.test
+    password: admin-password-123
