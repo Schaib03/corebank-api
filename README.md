@@ -1,6 +1,13 @@
 # corebank-api
 
-A core banking REST API in Java 21 and Spring Boot 3: customers, accounts, deposits,
+A core banking API in Spring Boot 3 where concurrent transfers can never create or lose money.
+
+[![ci](https://github.com/Schaib03/corebank-api/actions/workflows/ci.yml/badge.svg)](https://github.com/Schaib03/corebank-api/actions/workflows/ci.yml)
+![java](https://img.shields.io/badge/Java-21-ED8B00)
+![spring boot](https://img.shields.io/badge/Spring%20Boot-3.5-6DB33F)
+![tests](https://img.shields.io/badge/tests-43-brightgreen)
+
+It covers customers, accounts, deposits,
 withdrawals, transfers and paginated statements, behind JWT authentication with USER and
 ADMIN roles.
 
