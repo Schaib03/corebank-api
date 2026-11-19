@@ -15,7 +15,6 @@ import jakarta.persistence.Table;
 import java.time.Instant;
 import java.util.UUID;
 
-/** Login identity. A USER is linked to a customer; an ADMIN usually is not. */
 @Entity
 @Table(name = "app_users")
 public class AppUser {

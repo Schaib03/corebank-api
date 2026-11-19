@@ -19,7 +19,6 @@ import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtException;
 import org.springframework.test.util.ReflectionTestUtils;
 
-/** Uses the real encoder/decoder beans from SecurityConfig, without starting Spring. */
 class TokenServiceTest {
 
     private final SecurityConfig config = new SecurityConfig();

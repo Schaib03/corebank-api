@@ -50,13 +50,6 @@ public class TransactionService {
                 account, TransactionType.WITHDRAWAL, value, UUID.randomUUID(), null, description));
     }
 
-    /**
-     * Moves money between two accounts in one database transaction.
-     *
-     * Both rows are locked with SELECT ... FOR UPDATE, always in the same order (smallest id
-     * first). If transfer A->B and transfer B->A run at the same time, both try to lock the
-     * same row first, so one simply waits for the other instead of deadlocking.
-     */
     @Transactional
     public AccountTransaction transfer(
             CurrentUser user, UUID fromAccountId, String toAccountNumber, BigDecimal amount, String description) {
@@ -66,6 +59,7 @@ public class TransactionService {
             throw new BusinessRuleException("same-account", "Cannot transfer to the same account.");
         }
 
+        // Always lock the smaller id first so A->B and B->A cannot deadlock.
         boolean fromFirst = fromAccountId.compareTo(toAccountId) < 0;
         Account first = lock(fromFirst ? fromAccountId : toAccountId);
         Account second = lock(fromFirst ? toAccountId : fromAccountId);

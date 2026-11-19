@@ -13,7 +13,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface AccountRepository extends JpaRepository<Account, UUID> {
 
-    /** SELECT ... FOR UPDATE: other transactions wanting this row wait until we commit. */
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @QueryHints(@QueryHint(name = "jakarta.persistence.lock.timeout", value = "5000"))
     @Query("select a from Account a where a.id = :id")

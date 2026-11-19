@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 public class OpenApiConfig {
 
     static {
-        // CurrentUser comes from the JWT, it is not a request parameter.
         SpringDocUtils.getConfig().addRequestWrapperToIgnore(CurrentUser.class);
     }
 

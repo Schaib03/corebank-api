@@ -16,10 +16,6 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
-/**
- * One line of an account statement. Rows are only ever inserted. A transfer writes two
- * rows (TRANSFER_OUT and TRANSFER_IN) that share the same reference.
- */
 @Entity
 @Table(name = "account_transactions")
 public class AccountTransaction {

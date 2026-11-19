@@ -16,10 +16,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
-/**
- * Full application on H2 (or PostgreSQL in CI). Tests never clean the database, so every
- * test creates its own users with random emails and only asserts on its own data.
- */
+// Shared database: tests use random emails and only assert on their own data.
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")

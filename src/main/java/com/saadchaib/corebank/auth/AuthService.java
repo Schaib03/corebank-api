@@ -20,8 +20,7 @@ public class AuthService {
     private final CustomerRepository customers;
     private final PasswordEncoder passwordEncoder;
     private final TokenService tokenService;
-    // Checked when the email is unknown, so both failure paths cost one bcrypt comparison
-    // and the response time does not reveal which emails are registered.
+    // Unknown emails still cost one bcrypt check, so timing does not leak which emails exist.
     private final String dummyHash;
 
     public AuthService(

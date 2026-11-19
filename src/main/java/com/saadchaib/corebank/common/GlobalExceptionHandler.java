@@ -18,10 +18,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-/**
- * Maps exceptions to RFC 9457 problem details (application/problem+json).
- * Spring MVC's own exceptions (bad JSON, wrong method...) are handled by the base class.
- */
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 

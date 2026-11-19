@@ -10,11 +10,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-/**
- * Creates the first ADMIN from ADMIN_EMAIL / ADMIN_PASSWORD. There is no endpoint to
- * become admin, so this is the only way in; it does nothing if the variables are empty
- * or the user already exists.
- */
 @Component
 public class AdminBootstrap implements ApplicationRunner {
 

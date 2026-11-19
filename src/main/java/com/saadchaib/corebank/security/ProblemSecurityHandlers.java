@@ -11,10 +11,7 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;
 
-/**
- * Errors raised by the security filters happen before Spring MVC, so the
- * RestControllerAdvice never sees them. These write the same problem+json body.
- */
+// Filter-level errors never reach the controller advice.
 @Component
 public class ProblemSecurityHandlers {
 

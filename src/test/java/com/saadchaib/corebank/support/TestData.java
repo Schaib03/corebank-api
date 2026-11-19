@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.UUID;
 import org.springframework.test.util.ReflectionTestUtils;
 
-/** Builders for unit tests, where JPA does not generate ids for us. */
 public final class TestData {
 
     private TestData() {

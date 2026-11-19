@@ -28,7 +28,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-/** Real threads against the real database: the row locks have to do their job. */
 @SpringBootTest
 @ActiveProfiles("test")
 class ConcurrencyIT {

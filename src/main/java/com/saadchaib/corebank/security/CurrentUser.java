@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.UUID;
 import org.springframework.security.access.AccessDeniedException;
 
-/** The caller, built from the JWT claims. Injected into controller methods. */
 public record CurrentUser(UUID userId, String email, List<String> roles, UUID customerId) {
 
     public boolean isAdmin() {

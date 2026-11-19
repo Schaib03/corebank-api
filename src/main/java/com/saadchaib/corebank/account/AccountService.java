@@ -36,7 +36,6 @@ public class AccountService {
         return accounts.findByCustomerIdOrderByCreatedAtAsc(customerId);
     }
 
-    /** Admins see every account. Customers only see theirs; others look like they do not exist. */
     @Transactional(readOnly = true)
     public Account getAccessible(UUID accountId, CurrentUser user) {
         Account account = accounts.findById(accountId).orElseThrow(AccountService::notFound);
@@ -52,6 +51,7 @@ public class AccountService {
     }
 
     public static void checkAccess(Account account, CurrentUser user) {
+        // 404 rather than 403, so account ids cannot be probed
         if (!user.isAdmin() && !account.getCustomer().getId().equals(user.customerId())) {
             throw notFound();
         }

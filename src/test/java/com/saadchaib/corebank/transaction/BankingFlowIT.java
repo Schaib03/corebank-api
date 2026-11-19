@@ -162,7 +162,6 @@ class BankingFlowIT extends IntegrationTest {
                 .andExpect(status().isUnprocessableEntity())
                 .andExpect(jsonPath("$.code").value("balance-not-zero"));
 
-        // Admin can read any account.
         mvc.perform(get("/api/accounts/" + id).header(HttpHeaders.AUTHORIZATION, bearer(admin)))
                 .andExpect(status().isOk());
     }

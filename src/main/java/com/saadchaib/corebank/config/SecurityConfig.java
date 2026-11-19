@@ -34,7 +34,7 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http, ProblemSecurityHandlers problems) throws Exception {
         http
-                // Stateless API authenticated by bearer tokens, no cookies, so no CSRF risk.
+                // bearer tokens, no cookies
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
@@ -69,13 +69,11 @@ public class SecurityConfig {
         NimbusJwtDecoder decoder = NimbusJwtDecoder.withSecretKey(jwtSigningKey)
                 .macAlgorithm(MacAlgorithm.HS256)
                 .build();
-        // Default validators check exp/nbf; we also reject tokens from another issuer.
         decoder.setJwtValidator(new DelegatingOAuth2TokenValidator<>(
                 JwtValidators.createDefault(), new JwtIssuerValidator(properties.issuer())));
         return decoder;
     }
 
-    /** "roles": ["ADMIN"] in the token becomes the authority ROLE_ADMIN. */
     @Bean
     JwtAuthenticationConverter jwtAuthenticationConverter() {
         JwtGrantedAuthoritiesConverter authorities = new JwtGrantedAuthoritiesConverter();
@@ -88,7 +86,6 @@ public class SecurityConfig {
 
     @Bean
     PasswordEncoder passwordEncoder() {
-        // bcrypt by default, stored with a {bcrypt} prefix so the algorithm can change later.
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
